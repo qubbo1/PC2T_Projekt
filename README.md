@@ -38,9 +38,8 @@ employee_db/
 chmod +x spustit.sh
 ./spustit.sh
 
-<img width="475" height="527" alt="Screenshot 2026-05-04 at 11 01 29" src="https://github.com/user-attachments/assets/2776ea45-49a1-4d74-9167-4a05701ed3f9" />
-
 ```
+<img width="475" height="527" alt="Screenshot 2026-05-04 at 11 01 29" src="https://github.com/user-attachments/assets/2776ea45-49a1-4d74-9167-4a05701ed3f9" />
 
 ### Windows
 Dvojklik na `spustit.bat`
