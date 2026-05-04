@@ -18,9 +18,6 @@ public class DataovyAnalytik extends Zamestnanec {
     @Override
     public String getSkupina() { return "Datový analytik"; }
 
-    /**
-     * Dovednost: Najde spolupracovníka, s nímž má nejvíce společných spolupracovníků.
-     */
     @Override
     public String spustitDovednost(List<Zamestnanec> vsichni) {
         Set<Integer> mojiKolegy = getSpolurace().stream()
@@ -36,7 +33,7 @@ public class DataovyAnalytik extends Zamestnanec {
 
         for (Zamestnanec z : vsichni) {
             if (z.getId() == getId()) continue;
-            if (!mojiKolegy.contains(z.getId())) continue; // musí být můj kolega
+            if (!mojiKolegy.contains(z.getId())) continue;
 
             Set<Integer> jeho = z.getSpolurace().stream()
                     .map(Spoluprace::getKolegaId)
@@ -44,7 +41,7 @@ public class DataovyAnalytik extends Zamestnanec {
 
             Set<Integer> prusecik = new HashSet<>(mojiKolegy);
             prusecik.retainAll(jeho);
-            prusecik.remove(z.getId()); // odeber sebe
+            prusecik.remove(z.getId());
 
             if (prusecik.size() > maxSpolecnych) {
                 maxSpolecnych = prusecik.size();

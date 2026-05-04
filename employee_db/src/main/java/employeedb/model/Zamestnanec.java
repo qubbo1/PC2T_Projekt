@@ -20,7 +20,6 @@ public abstract class Zamestnanec {
         this.spoluprace = new ArrayList<>();
     }
 
-    // Konstruktor pro načítání z DB/souboru (se zadaným ID)
     public Zamestnanec(int id, String jmeno, String prijmeni, int rokNarozeni) {
         this.id = id;
         this.jmeno = jmeno;
@@ -41,7 +40,6 @@ public abstract class Zamestnanec {
     public List<Spoluprace> getSpolurace() { return spoluprace; }
 
     public void pridatSpolupraci(Spoluprace s) {
-        // Zamezit duplicitám
         spoluprace.removeIf(x -> x.getKolegaId() == s.getKolegaId());
         spoluprace.add(s);
     }
@@ -60,7 +58,7 @@ public abstract class Zamestnanec {
 
     public UrovenSpolurace prevazujiciKvalita() {
         if (spoluprace.isEmpty()) return null;
-        int[] pocty = new int[4]; // index 1,2,3
+        int[] pocty = new int[4];
         for (Spoluprace s : spoluprace) pocty[s.getUroven().getHodnota()]++;
         int max = 0, maxIdx = 1;
         for (int i = 1; i <= 3; i++) {

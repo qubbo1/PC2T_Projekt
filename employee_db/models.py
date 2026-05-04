@@ -1,6 +1,3 @@
-"""
-Databázový systém zaměstnanců - Modely (OOP)
-"""
 from abc import ABC, abstractmethod
 from enum import Enum
 import json
@@ -25,4 +22,4 @@ class UrovenSpolurace(Enum):
 
 
 class Spoluprace:
-    """Záznam spolupráce s
+    pass

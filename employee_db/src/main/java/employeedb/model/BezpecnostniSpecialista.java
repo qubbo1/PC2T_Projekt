@@ -15,21 +15,6 @@ public class BezpecnostniSpecialista extends Zamestnanec {
     @Override
     public String getSkupina() { return "Bezpečnostní specialista"; }
 
-    /**
-     * Dovednost: Výpočet rizikového skóre.
-     *
-     * Algoritmus:
-     *   riziko = (pocetKolegu * 10) / (prumernaKvalita * 3 + 1)
-     *
-     * Více spolupracovníků = více potenciálních hrozeb.
-     * Vyšší průměrná kvalita spolupráce = nižší riziko.
-     *
-     * Výsledek je zaokrouhlen na 2 desetinná místa.
-     * Kategorie:
-     *   0–10  → Nízké riziko
-     *   11–25 → Střední riziko
-     *   26+   → Vysoké riziko
-     */
     @Override
     public String spustitDovednost(List<Zamestnanec> vsichni) {
         int pocet = getSpolurace().size();

@@ -6,10 +6,6 @@ import employeedb.service.Databaza;
 import java.sql.*;
 import java.util.*;
 
-/**
- * SQL záloha – SQLite cez JDBC.
- * Ak driver nie je dostupný, operácia sa preskočí s upozornením.
- */
 public class SqlStorage {
     private static final String DB_URL = "jdbc:sqlite:employees.db";
     private static boolean driverDostupny = false;

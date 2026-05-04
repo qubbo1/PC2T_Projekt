@@ -6,9 +6,6 @@ import employeedb.service.Databaza;
 import java.io.*;
 import java.util.*;
 
-/**
- * Uložení/načtení jednoho zaměstnance do/ze souboru (.txt, vlastní formát).
- */
 public class SouborStorage {
 
     public static void ulozitZamestnance(Zamestnanec z, String cesta) throws IOException {

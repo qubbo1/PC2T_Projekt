@@ -63,15 +63,13 @@ public class Menu {
         System.out.print("─────────────────────────────────────\nVolba: ");
     }
 
-    // ── Akce ─────────────────────────────────────────────────────────────
-
     private void pridatZamestnance() {
         System.out.print("Skupina (1 = Datový analytik / 2 = Bezpečnostní specialista): ");
         String volba = sc.nextLine().trim();
         String skupina = switch (volba) {
             case "1" -> "analytik";
             case "2" -> "specialista";
-            default -> volba; // umožní aj priamy textový vstup
+            default -> volba;
         };
         System.out.print("Jméno: ");
         String jmeno = sc.nextLine().trim();
@@ -145,7 +143,6 @@ public class Menu {
         String cesta = sc.nextLine().trim();
         try {
             Zamestnanec z = SouborStorage.nacistZamestnance(cesta);
-            // Pokud již existuje, přepíšeme (odebereme starý)
             db.odebratZamestnance(z.getId());
             db.pridatZamestnanceObjekt(z);
             System.out.println("✔ Načten: " + z.zakladniInfo());

@@ -6,10 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Databaza {
-    // Dynamická datová struktura - LinkedList
     private final LinkedList<Zamestnanec> zamestnanci = new LinkedList<>();
-
-    // ── Správa zaměstnanců ────────────────────────────────────────────────
 
     public Zamestnanec pridatZamestnance(String skupina, String jmeno, String prijmeni, int rok) {
         Zamestnanec z = switch (skupina.toLowerCase()) {
@@ -29,7 +26,6 @@ public class Databaza {
         Zamestnanec target = najitPodleId(id);
         if (target == null) return false;
         zamestnanci.remove(target);
-        // Odstranit všechny vazby na tohoto zaměstnance
         for (Zamestnanec z : zamestnanci) {
             z.odebratSpolupraci(id);
         }
@@ -42,8 +38,6 @@ public class Databaza {
                 .findFirst().orElse(null);
     }
 
-    // ── Spolupráce ────────────────────────────────────────────────────────
-
     public String pridatSpolupraci(int idA, int idB, UrovenSpolurace uroven) {
         Zamestnanec a = najitPodleId(idA);
         Zamestnanec b = najitPodleId(idB);
@@ -54,17 +48,12 @@ public class Databaza {
         return "Spolupráce přidána.";
     }
 
-    // ── Dovednost ────────────────────────────────────────────────────────
-
     public String spustitDovednost(int id) {
         Zamestnanec z = najitPodleId(id);
         if (z == null) return "Zaměstnanec nenalezen.";
         return z.spustitDovednost(zamestnanci);
     }
 
-    // ── Výpisy ───────────────────────────────────────────────────────────
-
-    /** Abecední výpis podle příjmení, rozdělený do skupin */
     public String abecedniVypisSkupiny() {
         Map<String, List<Zamestnanec>> skupiny = new LinkedHashMap<>();
         skupiny.put("Datový analytik", new ArrayList<>());
@@ -85,7 +74,6 @@ public class Databaza {
         return sb.toString();
     }
 
-    /** Počet zaměstnanců ve skupinách */
     public String poctyVeSkupinach() {
         long analytici = zamestnanci.stream()
                 .filter(z -> z instanceof DataovyAnalytik).count();
@@ -95,11 +83,9 @@ public class Databaza {
                 analytici, specialiste, zamestnanci.size());
     }
 
-    /** Statistiky: převažující kvalita a zaměstnanec s nejvíce vazbami */
     public String statistiky() {
         if (zamestnanci.isEmpty()) return "Žádní zaměstnanci.";
 
-        // Převažující kvalita spolupráce (globálně)
         int[] pocty = new int[4];
         for (Zamestnanec z : zamestnanci) {
             for (Spoluprace s : z.getSpolurace()) {
@@ -115,7 +101,6 @@ public class Databaza {
             else prevazujici = UrovenSpolurace.SPATNA.getPopis();
         }
 
-        // Zaměstnanec s nejvíce vazbami
         Zamestnanec nejviceVazeb = zamestnanci.stream()
                 .max(Comparator.comparingInt(z -> z.getSpolurace().size()))
                 .orElse(null);

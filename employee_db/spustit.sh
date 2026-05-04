@@ -1,13 +1,10 @@
 #!/bin/bash
-# Spuštění aplikace Databázový systém zaměstnanců
-# Vyžaduje Java 17+
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SRC="$SCRIPT_DIR/src"
 OUT="$SCRIPT_DIR/out"
 LIB="$SCRIPT_DIR/lib"
 
-# Kompilace pokud je potřeba
 if [ ! -d "$OUT" ] || [ -z "$(ls -A "$OUT")" ]; then
     echo "Kompiluji zdrojové soubory..."
     mkdir -p "$OUT"
@@ -20,7 +17,6 @@ if [ ! -d "$OUT" ] || [ -z "$(ls -A "$OUT")" ]; then
     echo "Kompilace dokončena."
 fi
 
-# Spuštění
 if ls "$LIB"/*.jar 1>/dev/null 2>&1; then
     java -cp "$OUT:$LIB/*" -Dfile.encoding=UTF-8 employeedb.Main
 else
