@@ -37,7 +37,8 @@ employee_db/
 ```bash
 chmod +x spustit.sh
 ./spustit.sh
-<img width="386" height="528" alt="image" src="https://github.com/user-attachments/assets/ed3b2eb5-2f0a-405f-8007-b517df6ed50e" />
+
+<img width="475" height="527" alt="Screenshot 2026-05-04 at 11 01 29" src="https://github.com/user-attachments/assets/2776ea45-49a1-4d74-9167-4a05701ed3f9" />
 
 ```
 
