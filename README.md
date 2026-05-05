@@ -44,6 +44,11 @@ chmod +x spustit.sh
 ### Windows
 Dvojklik na `spustit.bat`
 
+### Spuštění v Eclipse
+Stáhnout zip složku
+V Eclipse: File -> Import -> General -> Projects from Folder or Archive ->
+ Import source directory (vybrat extrahovanou složku PC2T_Projekt-main -> PC2T_Projekt (vybrat složku) -> odznačit složku PC2T_Projekt v okně "Folders" -> Finish -> pravým klikem myši na src/main/java -> Run as Java Application
+ 
 ### Manuální kompilace a spuštění
 ```bash
 mkdir out
